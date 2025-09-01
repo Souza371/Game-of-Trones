@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pokedex Temática - Game of Thrones
 
 Este projeto Flutter é uma Pokedex temática inspirada no universo de Game of Thrones. O app permite criar perfil de jogador, escolher brasão e cores, buscar personagens em tempo real e visualizar detalhes vindos de uma API pública.
@@ -51,3 +52,6 @@ Vicente de Souza
 
 ---
 Dúvidas? Consulte o professor ou abra uma issue!
+=======
+# Game-of-Trones
+>>>>>>> 2bf37f89823468d858fc68400b70fb639d47f8d7
