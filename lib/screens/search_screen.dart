@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/got_api_service.dart';
+import '../services/tmdb_api_service.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -8,12 +8,12 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
-  List<Character> _results = [];
+  List<Map<String, dynamic>> _results = [];
   bool _isLoading = false;
 
   void _searchCharacters(String query) async {
     setState(() { _isLoading = true; });
-    final results = await GotApiService.searchCharacters(query);
+    final results = await TmdbApiService.searchCharacters(query);
     setState(() {
       _results = results;
       _isLoading = false;
@@ -47,8 +47,13 @@ class _SearchScreenState extends State<SearchScreen> {
                       itemBuilder: (context, index) {
                         final character = _results[index];
                         return ListTile(
-                          title: Text(character.name ?? 'Sem nome'),
-                          subtitle: Text(character.house ?? 'Casa desconhecida'),
+                          leading: character['profile_path'] != null && character['profile_path'] != ''
+                              ? CircleAvatar(
+                                  backgroundImage: NetworkImage(TmdbApiService.getImageUrl(character['profile_path'])),
+                                )
+                              : CircleAvatar(child: Icon(Icons.person)),
+                          title: Text(character['name'] ?? 'Sem nome'),
+                          subtitle: Text(character['character'] ?? ''),
                           onTap: () {
                             // Navegar para tela de detalhes
                           },

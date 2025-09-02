@@ -23,11 +23,40 @@ class HomeScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 32),
-            ElevatedButton(
+            ElevatedButton.icon(
+              icon: Icon(Icons.person),
               onPressed: () {
                 Navigator.pushNamed(context, '/profile');
               },
-              child: Text('Começar'),
+              label: Text('Perfil'),
+              style: ElevatedButton.styleFrom(minimumSize: Size(200, 40)),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton.icon(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                Navigator.pushNamed(context, '/search');
+              },
+              label: Text('Buscar Personagens'),
+              style: ElevatedButton.styleFrom(minimumSize: Size(200, 40)),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton.icon(
+              icon: Icon(Icons.shield),
+              onPressed: () {
+                Navigator.pushNamed(context, '/emblem');
+              },
+              label: Text('Criar Brasão'),
+              style: ElevatedButton.styleFrom(minimumSize: Size(200, 40)),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton.icon(
+              icon: Icon(Icons.quiz),
+              onPressed: () {
+                Navigator.pushNamed(context, '/quiz');
+              },
+              label: Text('Quiz das Casas'),
+              style: ElevatedButton.styleFrom(minimumSize: Size(200, 40)),
             ),
           ],
         ),
