@@ -49,7 +49,7 @@ class GotPoquedexApp extends StatelessWidget {
         '/quiz': (context) => QuizScreen(),
         '/emblem': (context) => EmblemCreatorScreen(),
   '/result': (context) => QuizResultScreen(),
-  '/house_result': (context) => HouseResultScreen(houseName: ''),
+  '/house_result': (context) => HouseResultScreen(),
         // Para detalhes, use Navigator.push
       },
       debugShowCheckedModeBanner: false,
