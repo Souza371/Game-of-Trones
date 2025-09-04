@@ -3,62 +3,62 @@ import '../models/house.dart';
 final List<House> houses = [
   House(
     name: 'Stark',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/House_Stark.svg/1200px-House_Stark.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/8/8a/House-Stark-Main-Shield.PNG',
     motto: 'O inverno está chegando',
   ),
   House(
-    name: 'Lannister',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/House_Lannister.svg/1200px-House_Lannister.svg.png',
+    name: 'Lannister', 
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/5/5c/House-Lannister-Main-Shield.PNG',
     motto: 'Ouça-me rugir!',
   ),
   House(
-    name: 'Targaryen', 
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/House_Targaryen.svg/1200px-House_Targaryen.svg.png',
+    name: 'Targaryen',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/4/43/House-Targaryen-Main-Shield.PNG',
     motto: 'Fogo e Sangue',
   ),
   House(
     name: 'Baratheon',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/House_Baratheon.svg/1200px-House_Baratheon.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/9/93/House-Baratheon-Main-Shield.PNG',
     motto: 'Nossa é a fúria',
   ),
   House(
     name: 'Greyjoy',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/House_Greyjoy.svg/1200px-House_Greyjoy.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/0/0e/House-Greyjoy-Main-Shield.PNG',
     motto: 'Nós Não Semeamos',
   ),
   House(
     name: 'Tyrell',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/House_Tyrell.svg/1200px-House_Tyrell.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/5/5b/House-Tyrell-Main-Shield.PNG',
     motto: 'Crescendo Fortes',
   ),
   House(
     name: 'Martell',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/House_Martell.svg/1200px-House_Martell.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/5/5d/House-Martell-Main-Shield.PNG',
     motto: 'Insubmissos, Não Curvados, Não Quebrados',
   ),
   House(
     name: 'Arryn',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/House_Arryn.svg/1200px-House_Arryn.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/8/83/House-Arryn-Main-Shield.PNG', 
     motto: 'Tão Alto Como a Honra',
   ),
   House(
     name: 'Tully',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/House_Tully.svg/1200px-House_Tully.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/7/7e/House-Tully-Main-Shield.PNG',
     motto: 'Família, Dever, Honra',
   ),
   House(
     name: 'Frey',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/House_Frey.svg/1200px-House_Frey.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/3/36/House-Frey-Main-Shield.PNG',
     motto: 'Nós Somos os Guardiões',
   ),
   House(
     name: 'Bolton',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/House_Bolton.svg/1200px-House_Bolton.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/6/60/House-Bolton-Main-Shield.PNG',
     motto: 'Nossas Lâminas São Afiadas',
   ),
   House(
     name: 'Mormont',
-    emblemUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/House_Mormont.svg/1200px-House_Mormont.svg.png',
+    emblemUrl: 'https://static.wikia.nocookie.net/gameofthrones/images/1/1c/House-Mormont-Main-Shield.PNG',
     motto: 'Aqui Nós Permanecemos',
   ),
 ];
