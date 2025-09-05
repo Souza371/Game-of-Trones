@@ -1,102 +1,102 @@
 import 'package:flutter/material.dart';
+import 'characters_screen.dart';
+// Remova as importaÁıes que n„o existem ou comente-as
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pokedex Tem√°tica - Game of Thrones'),
-        backgroundColor: Color(0xFF222831),
-        foregroundColor: Color(0xFFD8A31A),
+        title: const Text('Game of Thrones'),
+        backgroundColor: Colors.black87,
+        foregroundColor: Colors.white,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF1B1B1B),
-              Color(0xFF222831),
-            ],
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: GridView(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: 1.2,
           ),
+          children: [
+            _buildMenuCard(
+              context,
+              '?? Personagens',
+              Icons.people,
+              Colors.blue,
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CharactersScreen()),
+              ),
+            ),
+            _buildMenuCard(
+              context,
+              '? Quiz (Em Breve)',
+              Icons.quiz,
+              Colors.green,
+              () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Funcionalidade em desenvolvimento!')),
+                );
+              },
+            ),
+            _buildMenuCard(
+              context,
+              '??? Bras„o (Em Breve)',
+              Icons.emoji_events,
+              Colors.red,
+              () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Funcionalidade em desenvolvimento!')),
+                );
+              },
+            ),
+            _buildMenuCard(
+              context,
+              '?? Buscar (Em Breve)',
+              Icons.search,
+              Colors.orange,
+              () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Funcionalidade em desenvolvimento!')),
+                );
+              },
+            ),
+          ],
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Bem-vindo √† Pokedex Tem√°tica!',
-                style: TextStyle(
-                  fontSize: 24, 
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFD8A31A),
-                  fontFamily: 'Cinzel',
-                ),
-                textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildMenuCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+  ) {
+    return Card(
+      elevation: 8,
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 40, color: color),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
               ),
-              SizedBox(height: 16),
-              Text(
-                'Explore personagens, personalize seu perfil e escolha seu bras√£o.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 32),
-              ElevatedButton.icon(
-                icon: Icon(Icons.person),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/profile');
-                },
-                label: Text('Perfil'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200, 50),
-                  backgroundColor: Color(0xFFD8A31A),
-                  foregroundColor: Colors.black,
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton.icon(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/search');
-                },
-                label: Text('Buscar Personagens'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200, 50),
-                  backgroundColor: Color(0xFFD8A31A),
-                  foregroundColor: Colors.black,
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton.icon(
-                icon: Icon(Icons.shield),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/emblem_editor'); // CORRIGIDO
-                },
-                label: Text('Criar Bras√£o'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200, 50),
-                  backgroundColor: Color(0xFFD8A31A),
-                  foregroundColor: Colors.black,
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton.icon(
-                icon: Icon(Icons.quiz),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/quiz');
-                },
-                label: Text('Quiz das Casas'),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(200, 50),
-                  backgroundColor: Color(0xFFD8A31A),
-                  foregroundColor: Colors.black,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,57 +1,23 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/profile_screen.dart';
-import 'screens/search_screen.dart';
-import 'screens/character_detail_screen.dart';
-import 'screens/quiz_screen.dart';
-import 'screens/emblem_editor_screen.dart'; // NOVO EDITOR
-import 'screens/quiz_result_screen.dart';
-import 'screens/house_result_screen.dart';
 
 void main() {
-  runApp(GotPoquedexApp());
+  runApp(const MyApp());
 }
 
-class GotPoquedexApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Game of Thrones - Criador de Brasões',
-      theme: ThemeData.dark().copyWith(
-        colorScheme: ColorScheme.dark(
-          primary: Color(0xFF222831),
-          secondary: Color(0xFFD8A31A),
-        ),
-        scaffoldBackgroundColor: Color(0xFF1B1B1B),
-        textTheme: ThemeData.dark().textTheme.apply(
-          fontFamily: 'Cinzel',
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Color(0xFF222831),
-          foregroundColor: Color(0xFFD8A31A),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFFD8A31A),
-            foregroundColor: Colors.black,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        ),
+      title: 'Game of Thrones',
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+        useMaterial3: true,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/profile': (context) => ProfileScreen(),
-        '/search': (context) => SearchScreen(),
-        '/quiz': (context) => QuizScreen(),
-        '/emblem_editor': (context) => EmblemEditorScreen(), // EDITOR ADICIONADO
-        '/result': (context) => QuizResultScreen(),
-        '/house_result': (context) => HouseResultScreen(),
-      },
+      home: const HomeScreen(), // VOLTA PARA A TELA INICIAL
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
