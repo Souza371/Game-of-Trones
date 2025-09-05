@@ -4,10 +4,9 @@ import 'screens/profile_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/character_detail_screen.dart';
 import 'screens/quiz_screen.dart';
-import 'screens/emblem_creator_screen.dart';
+import 'screens/emblem_editor_screen.dart'; // NOVO EDITOR
 import 'screens/quiz_result_screen.dart';
 import 'screens/house_result_screen.dart';
-
 
 void main() {
   runApp(GotPoquedexApp());
@@ -17,7 +16,7 @@ class GotPoquedexApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pokedex Temática - Game of Thrones',
+      title: 'Game of Thrones - Criador de Brasões',
       theme: ThemeData.dark().copyWith(
         colorScheme: ColorScheme.dark(
           primary: Color(0xFF222831),
@@ -47,12 +46,12 @@ class GotPoquedexApp extends StatelessWidget {
         '/profile': (context) => ProfileScreen(),
         '/search': (context) => SearchScreen(),
         '/quiz': (context) => QuizScreen(),
-        '/emblem': (context) => EmblemCreatorScreen(),
-  '/result': (context) => QuizResultScreen(),
-  '/house_result': (context) => HouseResultScreen(),
-        // Para detalhes, use Navigator.push
+        '/emblem_editor': (context) => EmblemEditorScreen(), // EDITOR ADICIONADO
+        '/result': (context) => QuizResultScreen(),
+        '/house_result': (context) => HouseResultScreen(),
       },
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
