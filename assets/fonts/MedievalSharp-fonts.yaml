@@ -1,0 +1,4 @@
+fonts:
+  - family: MedievalSharp
+    fonts:
+      - asset: assets/fonts/MedievalSharp-Regular.ttf

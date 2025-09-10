@@ -7,7 +7,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController _nameController = TextEditingController();
-  String selectedEmblem = 'Stark';
+  // String selectedEmblem = 'Stark';
   Color selectedColor = Colors.blueGrey;
 
   @override
@@ -27,9 +27,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               decoration: InputDecoration(hintText: 'Digite seu nome'),
             ),
             SizedBox(height: 24),
-            Text('Escolha seu brasão:', style: TextStyle(fontSize: 18)),
+            // Text('Escolha seu brasão:', style: TextStyle(fontSize: 18)),
             DropdownButton<String>(
-              value: selectedEmblem,
+              // value: selectedEmblem,
               items: ['Stark', 'Lannister', 'Targaryen', 'Baratheon', 'Greyjoy']
                   .map((house) => DropdownMenuItem(
                         value: house,
@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   .toList(),
               onChanged: (value) {
                 setState(() {
-                  selectedEmblem = value!;
+                  // selectedEmblem = value!;
                 });
               },
             ),

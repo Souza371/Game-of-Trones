@@ -20,32 +20,20 @@ class Character {
   });
 
   factory Character.fromJson(Map<String, dynamic> json) {
-    // SOLU«√O DEFINITIVA PARA AS IMAGENS
+    // L√≥gica aprimorada para garantir imagem sempre que poss√≠vel
     String finalImageUrl = '';
-    
-    // Tenta todas as possibilidades
     if (json['imageUrl'] != null && json['imageUrl'].toString().startsWith('http')) {
       finalImageUrl = json['imageUrl'].toString();
-    } 
-    else if (json['image'] != null && json['image'].toString().isNotEmpty) {
+    } else if (json['image'] != null && json['image'].toString().isNotEmpty) {
       final imageFile = json['image'].toString();
-      
-      // Tenta diferentes formatos de URL
-      final possibleUrls = [
-        'https://thronesapi.com/assets/images/$imageFile',
-        'https://thronesapi.com/images/$imageFile',
-        'https://api.thronesapi.com/assets/$imageFile',
-      ];
-      
-      // Usa a primeira URL que provavelmente funciona
-      finalImageUrl = possibleUrls[0];
-    }
-    else {
-      // Placeholder personalizado
+      // ThronesAPI padr√£o
+      finalImageUrl = 'https://thronesapi.com/assets/images/$imageFile';
+    } else {
+      // Placeholder medieval personalizado
       final initials = json['fullName'] != null 
           ? _getInitials(json['fullName'].toString())
           : 'GO';
-      finalImageUrl = 'https://via.placeholder.com/150x200/2c3e50/ecf0f1?text=$initials';
+      finalImageUrl = 'https://ui-avatars.com/api/?name=$initials&background=2c3e50&color=ecf0f1&size=150&font-size=0.5&rounded=true&bold=true';
     }
 
     return Character(

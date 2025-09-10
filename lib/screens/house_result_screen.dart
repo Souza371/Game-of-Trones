@@ -14,7 +14,7 @@ class HouseResultScreen extends StatelessWidget {
           children: [
             Text('Você pertence à Casa ${house.name}!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             SizedBox(height: 24),
-            Image.network(house.emblemUrl, height: 120),
+            // Image.network(house.emblemUrl, height: 120),
             SizedBox(height: 16),
             Text(house.motto, style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic)),
             SizedBox(height: 32),

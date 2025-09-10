@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'characters_screen.dart';
-// Remova as importações que não existem ou comente-as
+import 'westeros_map_screen.dart';
+import 'quiz_screen.dart';
+// Remova as importaï¿½ï¿½es que nï¿½o existem ou comente-as
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,61 +15,59 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.black87,
         foregroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: GridView(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-            childAspectRatio: 1.2,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/castle_bg.jpg',
+            fit: BoxFit.cover,
+            color: Colors.black.withOpacity(0.25),
+            colorBlendMode: BlendMode.darken,
           ),
-          children: [
-            _buildMenuCard(
-              context,
-              '?? Personagens',
-              Icons.people,
-              Colors.blue,
-              () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CharactersScreen()),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                childAspectRatio: 1.2,
               ),
+              children: [
+                _buildMenuCard(
+                  context,
+                  'ðŸ‘‘ Personagens',
+                  Icons.people,
+                  Colors.blue,
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CharactersScreen()),
+                  ),
+                ),
+                _buildMenuCard(
+                  context,
+                  'ðŸ—ºï¸ Mapa de Westeros',
+                  Icons.map,
+                  Colors.brown,
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const WesterosMapScreen()),
+                  ),
+                ),
+                _buildMenuCard(
+                  context,
+                  'â“ Quiz das Casas',
+                  Icons.quiz,
+                  Colors.green,
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const QuizScreen()),
+                  ),
+                ),
+              ],
             ),
-            _buildMenuCard(
-              context,
-              '? Quiz (Em Breve)',
-              Icons.quiz,
-              Colors.green,
-              () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Funcionalidade em desenvolvimento!')),
-                );
-              },
-            ),
-            _buildMenuCard(
-              context,
-              '??? Brasão (Em Breve)',
-              Icons.emoji_events,
-              Colors.red,
-              () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Funcionalidade em desenvolvimento!')),
-                );
-              },
-            ),
-            _buildMenuCard(
-              context,
-              '?? Buscar (Em Breve)',
-              Icons.search,
-              Colors.orange,
-              () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Funcionalidade em desenvolvimento!')),
-                );
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

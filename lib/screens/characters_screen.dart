@@ -75,35 +75,42 @@ class CharacterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+        side: const BorderSide(color: Color(0xFFD8A31A), width: 2),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: character.imageUrl.isNotEmpty
-                ? Image.network(
-                    character.imageUrl,
-                    fit: BoxFit.cover,
-                    headers: const {'Cache-Control': 'no-cache'},
-                    cacheWidth: 150,
-                    cacheHeight: 200,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded / 
-                                loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    },
-                    errorBuilder: (context, error, stackTrace) {
-                      print('? Erro ao carregar imagem: ${character.imageUrl}');
-                      print('? Erro: $error');
-                      return _buildPlaceholderImage(character.fullName);
-                    },
-                  )
-                : _buildPlaceholderImage(character.fullName),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: character.imageUrl.isNotEmpty
+                  ? Image.network(
+                      character.imageUrl,
+                      fit: BoxFit.cover,
+                      headers: const {'Cache-Control': 'no-cache'},
+                      cacheWidth: 150,
+                      cacheHeight: 200,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stackTrace) {
+                        print('? Erro ao carregar imagem: \\${character.imageUrl}');
+                        print('? Erro: \\${error}');
+                        return _buildPlaceholderImage(character.fullName);
+                      },
+                    )
+                  : _buildPlaceholderImage(character.fullName),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -114,31 +121,19 @@ class CharacterCard extends StatelessWidget {
                   character.fullName,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  'Casa: ${character.family.isNotEmpty ? character.family : 'Desconhecida'}',
-                  style: TextStyle(
-                    color: _getHouseColor(character.family),
-                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    fontFamily: 'MedievalSharp',
                   ),
                 ),
-                if (character.title.isNotEmpty)
-                  Text(
-                    character.title,
-                    style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                // Debug: mostra a URL da imagem
+                const SizedBox(height: 6),
                 Text(
-                  'Imagem: ${character.imageUrl}',
-                  style: const TextStyle(fontSize: 8, color: Colors.grey),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  character.title,
+                  style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'MedievalSharp'),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  character.family,
+                  style: const TextStyle(fontSize: 16, color: Color(0xFFD8A31A), fontFamily: 'MedievalSharp'),
                 ),
               ],
             ),
@@ -151,30 +146,12 @@ class CharacterCard extends StatelessWidget {
   Widget _buildPlaceholderImage(String name) {
     return Container(
       color: Colors.grey[300],
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.person, size: 40, color: Colors.grey),
-          const SizedBox(height: 8),
-          Text(
-            name.split(' ').first,
-            style: const TextStyle(fontSize: 12, color: Colors.grey),
-            textAlign: TextAlign.center,
-          ),
-        ],
+      child: Center(
+        child: Text(
+          name.isNotEmpty ? name[0] : '?',
+          style: const TextStyle(fontSize: 48, fontFamily: 'MedievalSharp'),
+        ),
       ),
     );
-  }
-
-  Color _getHouseColor(String house) {
-    final houseLower = house.toLowerCase();
-    if (houseLower.contains('stark')) return Colors.grey[800]!;
-    if (houseLower.contains('targaryen')) return Colors.red[800]!;
-    if (houseLower.contains('lannister')) return Colors.amber[800]!;
-    if (houseLower.contains('baratheon')) return Colors.yellow[800]!;
-    if (houseLower.contains('tyrell')) return Colors.green[800]!;
-    if (houseLower.contains('martell')) return Colors.orange[800]!;
-    if (houseLower.contains('unknown')) return Colors.purple;
-    return Colors.blue;
   }
 }
