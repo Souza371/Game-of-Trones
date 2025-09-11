@@ -12,40 +12,74 @@ class _QuizScreenState extends State<QuizScreen> {
   final List<_QuizQuestion> _questions = [
     _QuizQuestion(
       question: 'Qual seu signo do zodíaco?',
-      options: ['Áries', 'Touro', 'Gêmeos', 'Câncer'],
-    ),
-    _QuizQuestion(
-      question: 'Qual seu maior valor?',
-      options: ['Lealdade', 'Ambição', 'Coragem', 'Sabedoria'],
-    ),
-    _QuizQuestion(
-      question: 'O que você mais valoriza em amigos?',
-      options: ['Honestidade', 'Poder', 'Aventura', 'Inteligência'],
-    ),
-    _QuizQuestion(
-      question: 'Qual animal você mais se identifica?',
-      options: ['Lobo', 'Leão', 'Dragão', 'Corvo'],
-    ),
-    _QuizQuestion(
-      question: 'Qual estação do ano você prefere?',
-      options: ['Inverno', 'Verão', 'Primavera', 'Outono'],
-    ),
-    _QuizQuestion(
-      question: 'Qual dessas cores você mais gosta?',
-      options: ['Cinza', 'Dourado', 'Vermelho', 'Azul'],
-    ),
-    _QuizQuestion(
-      question: 'Qual dessas frases te define?',
       options: [
-        'O inverno está chegando',
-        'Ouça-me rugir',
-        'Fogo e sangue',
-        'Nós não semeamos'
+        'Áries', 'Touro', 'Gêmeos', 'Câncer',
+        'Leão', 'Virgem', 'Libra', 'Escorpião',
+        'Sagitário', 'Capricórnio', 'Aquário', 'Peixes',
       ],
     ),
     _QuizQuestion(
-      question: 'Qual dessas profissões você escolheria?',
-      options: ['Líder', 'Estrategista', 'Aventureiro', 'Conselheiro'],
+      question: 'Quando enfrenta um desafio, você:',
+      options: [
+        'Segue sua intuição, mesmo que vá contra todos',
+        'Analisa friamente e traça um plano',
+        'Busca apoio dos aliados e age em grupo',
+        'Arrisca tudo, confiando na sorte',
+      ],
+    ),
+    _QuizQuestion(
+      question: 'O que mais te motiva a vencer?',
+      options: [
+        'Provar seu valor para si mesmo',
+        'Conquistar poder e reconhecimento',
+        'Proteger quem você ama',
+        'Desvendar mistérios e aprender',
+      ],
+    ),
+    _QuizQuestion(
+      question: 'Diante de uma traição, você:',
+      options: [
+        'Perdoa, mas nunca esquece',
+        'Se vinga sem piedade',
+        'Se afasta e observa',
+        'Tenta entender o motivo',
+      ],
+    ),
+    _QuizQuestion(
+      question: 'Qual dessas frases te representa melhor?',
+      options: [
+        'O inverno revela os verdadeiros corações',
+        'O poder é tudo',
+        'O fogo renova e destrói',
+        'O mar é imprevisível',
+      ],
+    ),
+    _QuizQuestion(
+      question: 'Em uma situação de perigo, você:',
+      options: [
+        'Protege os mais fracos',
+        'Toma a liderança',
+        'Procura uma saída criativa',
+        'Mantém a calma e observa',
+      ],
+    ),
+    _QuizQuestion(
+      question: 'O que mais te assusta?',
+      options: [
+        'Perder quem ama',
+        'Fracassar publicamente',
+        'Ser traído',
+        'Não ser compreendido',
+      ],
+    ),
+    _QuizQuestion(
+      question: 'Qual dessas virtudes você mais admira?',
+      options: [
+        'Lealdade',
+        'Ambição',
+        'Coragem',
+        'Sabedoria',
+      ],
     ),
   ];
 

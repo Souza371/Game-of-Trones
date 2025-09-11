@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+
 class IceAndFireAPI {
   static const String baseUrl = 'https://anapioficeandfire.com/api';
   
@@ -40,4 +41,5 @@ class IceAndFireAPI {
       throw Exception('Falha ao carregar livros');
     }
   }
+
 }
