@@ -5,7 +5,7 @@ class EmblemCreatorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
     // TODO: Tela de brasão removida conforme nova especificação do app.
     // appBar: AppBar(
     //   title: const Text('Criador de Bras�o'),

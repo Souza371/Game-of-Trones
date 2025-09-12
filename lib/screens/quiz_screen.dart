@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({Key? key}) : super(key: key);
+  const QuizScreen({super.key});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -49,7 +49,7 @@ class _QuizScreenState extends State<QuizScreen> {
   ];
 
   int _currentQuestion = 0;
-  List<int> _answers = [];
+  final List<int> _answers = [];
 
   void _next(int selected) {
     setState(() {
@@ -129,7 +129,7 @@ class _QuizQuestion {
 
 class QuizResultScreen extends StatelessWidget {
   final List<int> answers;
-  const QuizResultScreen({Key? key, required this.answers}) : super(key: key);
+  const QuizResultScreen({super.key, required this.answers});
 
   @override
   Widget build(BuildContext context) {
@@ -153,9 +153,9 @@ class QuizResultScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Você pertence à Casa',
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               Text(

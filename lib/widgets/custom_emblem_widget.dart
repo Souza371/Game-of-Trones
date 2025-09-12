@@ -4,6 +4,8 @@ class CustomEmblemWidget extends StatelessWidget {
   final String house;
   final Color color;
 
+  const CustomEmblemWidget({super.key});
+
   // const CustomEmblemWidget({required this.house, required this.color});
 
   @override

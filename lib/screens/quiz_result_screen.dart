@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 
 class QuizResultScreen extends StatelessWidget {
+  const QuizResultScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final answers = ModalRoute.of(context)!.settings.arguments as List<int>? ?? [];
     final house = _getHouseFromAnswers(answers);
     return Scaffold(
-      appBar: AppBar(title: Text('Resultado do Quiz')), 
+      appBar: AppBar(title: const Text('Resultado do Quiz')), 
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Você pertence à casa:', style: TextStyle(fontSize: 20)),
-            SizedBox(height: 16),
-            Text(house, style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-            SizedBox(height: 32),
+            const Text('Você pertence à casa:', style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 16),
+            Text(house, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () => Navigator.popUntil(context, ModalRoute.withName('/')),
-              child: Text('Voltar ao início'),
+              child: const Text('Voltar ao início'),
             )
           ],
         ),

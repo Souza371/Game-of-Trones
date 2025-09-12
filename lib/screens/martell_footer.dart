@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MartellFooter extends StatelessWidget {
   final bool compact;
-  const MartellFooter({this.compact = false, Key? key}) : super(key: key);
+  const MartellFooter({this.compact = false, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +40,10 @@ class MartellFooter extends StatelessWidget {
             'Casa Martell',
             style: TextStyle(
               fontFamily: 'MedievalSharp',
-              color: Color(0xFFFF8C66),
+              color: const Color(0xFFFF8C66),
               fontSize: compact ? 15 : (isMobile ? 22 : 28),
               fontWeight: FontWeight.bold,
-              shadows: [Shadow(color: Colors.black54, blurRadius: 3)],
+              shadows: const [Shadow(color: Colors.black54, blurRadius: 3)],
             ),
           ),
           const SizedBox(height: 2),

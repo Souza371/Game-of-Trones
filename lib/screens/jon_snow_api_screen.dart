@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/character_api_model.dart';
 
 class JonSnowApiScreen extends StatefulWidget {
-  const JonSnowApiScreen({Key? key}) : super(key: key);
+  const JonSnowApiScreen({super.key});
 
   @override
   State<JonSnowApiScreen> createState() => _JonSnowApiScreenState();

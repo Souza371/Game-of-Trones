@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             // Rodapé estilizado Casa Martell
-            MartellFooter(compact: true),
+            const MartellFooter(compact: true),
           ],
         ),
       ),

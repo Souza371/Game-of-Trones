@@ -14,21 +14,22 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^1.2.1
   url_launcher: ^6.2.6
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true
   assets:
     - assets/
     - assets/images/castle_bg.jpg
-    - assets/images/houses/stark.png
-    - assets/images/houses/lannister.png
-    - assets/images/houses/targaryen.png
-    - assets/images/houses/greyjoy.png
+    - assets/images/houses/Stark.jpg
+    - assets/images/houses/Lannister.jpg
+    - assets/images/houses/Targaryen.jpg
+    - assets/images/houses/Greyjoy.jpg
   fonts:
     - family: MedievalSharp
       fonts:

@@ -17,10 +17,9 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF1a1a1a),
         fontFamily: 'Roboto',
-        colorScheme: ColorScheme.dark(
+        colorScheme: const ColorScheme.dark(
           primary: Color(0xFFC8A971), // dourado
-          secondary: Color(0xFF8B0000), // vermelho escuro
-          background: Color(0xFF1a1a1a),
+          secondary: Color(0xFF8B0000),
           surface: Color(0xFF2c2c2c),
         ),
         appBarTheme: const AppBarTheme(
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFFC8A971),
-            foregroundColor: Color(0xFF1a1a1a),
+            foregroundColor: const Color(0xFF1a1a1a),
             textStyle: const TextStyle(fontWeight: FontWeight.bold),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
           ),
@@ -63,9 +62,9 @@ class MyApp extends StatelessWidget {
           bodySmall: const TextStyle(fontFamily: 'Roboto', color: Color(0xFFCCCCCC)),
         ),
         dataTableTheme: DataTableThemeData(
-          headingRowColor: MaterialStateProperty.all(Color(0xFF8B0000)),
+          headingRowColor: WidgetStateProperty.all(const Color(0xFF8B0000)),
           headingTextStyle: const TextStyle(fontFamily: 'MedievalSharp', color: Color(0xFFF5F5F5), fontWeight: FontWeight.bold),
-          dataRowColor: MaterialStateProperty.all(Color(0xFF2c2c2c)),
+          dataRowColor: WidgetStateProperty.all(const Color(0xFF2c2c2c)),
           dataTextStyle: const TextStyle(fontFamily: 'Roboto', color: Color(0xFFF5F5F5)),
         ),
         inputDecorationTheme: const InputDecorationTheme(

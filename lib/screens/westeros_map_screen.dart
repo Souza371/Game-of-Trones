@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WesterosMapScreen extends StatelessWidget {
-  const WesterosMapScreen({Key? key}) : super(key: key);
+  const WesterosMapScreen({super.key});
 
   final String mapUrl = 'https://quartermaester.info/?layers=electoral';
 
@@ -35,10 +35,10 @@ class WesterosMapScreen extends StatelessWidget {
           backgroundColor: const Color(0xFF222831),
           foregroundColor: const Color(0xFFD8A31A),
         ),
-        body: Center(
+        body: const Center(
           child: Text(
             'O mapa interativo está disponível apenas na versão web.\nAcesse pelo navegador para explorar os distritos eleitorais de Westeros.',
-            style: const TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18),
             textAlign: TextAlign.center,
           ),
         ),

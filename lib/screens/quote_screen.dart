@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class QuoteScreen extends StatelessWidget {
-  const QuoteScreen({Key? key}) : super(key: key);
+  const QuoteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +11,8 @@ class QuoteScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF222831),
         foregroundColor: const Color(0xFFD8A31A),
       ),
-      body: Center(
-        child: const Text(
+      body: const Center(
+        child: Text(
           'A tela de citações foi removida.',
           style: TextStyle(
             fontSize: 24,

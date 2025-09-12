@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Internet permission required for loading images and API calls in release mode -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="got_poquedex"
         android:name="${applicationName}"
