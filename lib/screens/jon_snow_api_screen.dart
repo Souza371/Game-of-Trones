@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/character_api_model.dart';
-import '../services/iceandfire_api.dart';
 
 class JonSnowApiScreen extends StatefulWidget {
   const JonSnowApiScreen({Key? key}) : super(key: key);
@@ -15,7 +14,6 @@ class _JonSnowApiScreenState extends State<JonSnowApiScreen> {
   @override
   void initState() {
     super.initState();
-    _futureCharacter = IceAndFireAPI.getCharacterById(583);
   }
 
   @override

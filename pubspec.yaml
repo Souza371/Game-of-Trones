@@ -24,6 +24,11 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/castle_bg.jpg
+    - assets/images/houses/stark.png
+    - assets/images/houses/lannister.png
+    - assets/images/houses/targaryen.png
+    - assets/images/houses/greyjoy.png
   fonts:
     - family: MedievalSharp
       fonts:

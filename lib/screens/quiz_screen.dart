@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -12,74 +11,40 @@ class _QuizScreenState extends State<QuizScreen> {
   final List<_QuizQuestion> _questions = [
     _QuizQuestion(
       question: 'Qual seu signo do zodíaco?',
+      options: ['Áries', 'Touro', 'Gêmeos', 'Câncer'],
+    ),
+    _QuizQuestion(
+      question: 'Qual seu maior valor?',
+      options: ['Lealdade', 'Ambição', 'Coragem', 'Sabedoria'],
+    ),
+    _QuizQuestion(
+      question: 'O que você mais valoriza em amigos?',
+      options: ['Honestidade', 'Poder', 'Aventura', 'Inteligência'],
+    ),
+    _QuizQuestion(
+      question: 'Qual animal você mais se identifica?',
+      options: ['Lobo', 'Leão', 'Dragão', 'Corvo'],
+    ),
+    _QuizQuestion(
+      question: 'Qual estação do ano você prefere?',
+      options: ['Inverno', 'Verão', 'Primavera', 'Outono'],
+    ),
+    _QuizQuestion(
+      question: 'Qual dessas cores você mais gosta?',
+      options: ['Cinza', 'Dourado', 'Vermelho', 'Azul'],
+    ),
+    _QuizQuestion(
+      question: 'Qual dessas frases te define?',
       options: [
-        'Áries', 'Touro', 'Gêmeos', 'Câncer',
-        'Leão', 'Virgem', 'Libra', 'Escorpião',
-        'Sagitário', 'Capricórnio', 'Aquário', 'Peixes',
+        'O inverno está chegando',
+        'Ouça-me rugir',
+        'Fogo e sangue',
+        'Nós não semeamos'
       ],
     ),
     _QuizQuestion(
-      question: 'Quando enfrenta um desafio, você:',
-      options: [
-        'Segue sua intuição, mesmo que vá contra todos',
-        'Analisa friamente e traça um plano',
-        'Busca apoio dos aliados e age em grupo',
-        'Arrisca tudo, confiando na sorte',
-      ],
-    ),
-    _QuizQuestion(
-      question: 'O que mais te motiva a vencer?',
-      options: [
-        'Provar seu valor para si mesmo',
-        'Conquistar poder e reconhecimento',
-        'Proteger quem você ama',
-        'Desvendar mistérios e aprender',
-      ],
-    ),
-    _QuizQuestion(
-      question: 'Diante de uma traição, você:',
-      options: [
-        'Perdoa, mas nunca esquece',
-        'Se vinga sem piedade',
-        'Se afasta e observa',
-        'Tenta entender o motivo',
-      ],
-    ),
-    _QuizQuestion(
-      question: 'Qual dessas frases te representa melhor?',
-      options: [
-        'O inverno revela os verdadeiros corações',
-        'O poder é tudo',
-        'O fogo renova e destrói',
-        'O mar é imprevisível',
-      ],
-    ),
-    _QuizQuestion(
-      question: 'Em uma situação de perigo, você:',
-      options: [
-        'Protege os mais fracos',
-        'Toma a liderança',
-        'Procura uma saída criativa',
-        'Mantém a calma e observa',
-      ],
-    ),
-    _QuizQuestion(
-      question: 'O que mais te assusta?',
-      options: [
-        'Perder quem ama',
-        'Fracassar publicamente',
-        'Ser traído',
-        'Não ser compreendido',
-      ],
-    ),
-    _QuizQuestion(
-      question: 'Qual dessas virtudes você mais admira?',
-      options: [
-        'Lealdade',
-        'Ambição',
-        'Coragem',
-        'Sabedoria',
-      ],
+      question: 'Qual dessas profissões você escolheria?',
+      options: ['Líder', 'Estrategista', 'Aventureiro', 'Conselheiro'],
     ),
   ];
 
@@ -168,13 +133,12 @@ class QuizResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Simples lógica para associar respostas a casas
     final houseIndex = answers.fold<int>(0, (a, b) => a + b) % 4;
     final houses = [
-      _HouseResult('Stark', 'O inverno está chegando', 'https://awoiaf.westeros.org/images/2/24/House_Stark.svg'),
-      _HouseResult('Lannister', 'Ouça-me rugir', 'https://awoiaf.westeros.org/images/9/9e/House_Lannister.svg'),
-      _HouseResult('Targaryen', 'Fogo e sangue', 'https://awoiaf.westeros.org/images/6/6a/House_Targaryen.svg'),
-      _HouseResult('Greyjoy', 'Nós não semeamos', 'https://awoiaf.westeros.org/images/5/52/House_Greyjoy.svg'),
+      _HouseResult('Stark', 'O inverno está chegando', 'assets/images/houses/stark.png'),
+      _HouseResult('Lannister', 'Ouça-me rugir', 'assets/images/houses/lannister.png'),
+      _HouseResult('Targaryen', 'Fogo e sangue', 'assets/images/houses/targaryen.png'),
+      _HouseResult('Greyjoy', 'Nós não semeamos', 'assets/images/houses/greyjoy.png'),
     ];
     final result = houses[houseIndex];
     return Scaffold(
@@ -199,7 +163,7 @@ class QuizResultScreen extends StatelessWidget {
                 style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFFD8A31A)),
               ),
               const SizedBox(height: 16),
-              Image.network(result.emblemUrl, height: 120),
+              Image.asset(result.emblemUrl, height: 120),
               const SizedBox(height: 24),
               Text(
                 result.motto,
