@@ -5,6 +5,8 @@ import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 
 class EmblemEditorScreen extends StatefulWidget {
+  const EmblemEditorScreen({super.key});
+
   @override
   _EmblemEditorScreenState createState() => _EmblemEditorScreenState();
 }
@@ -49,18 +51,18 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editor de Brasão'),
-        backgroundColor: Color(0xFF222831),
-        foregroundColor: Color(0xFFD8A31A),
+        title: const Text('Editor de Brasão'),
+        backgroundColor: const Color(0xFF222831),
+        foregroundColor: const Color(0xFFD8A31A),
         actions: [
           IconButton(
-            icon: Icon(Icons.save),
+            icon: const Icon(Icons.save),
             onPressed: _saveEmblem,
           )
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -82,7 +84,7 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
                     height: 200,
                     decoration: BoxDecoration(
                       color: _backgroundColor,
-                      border: Border.all(color: Color(0xFFD8A31A), width: 3),
+                      border: Border.all(color: const Color(0xFFD8A31A), width: 3),
                       borderRadius: _getBorderRadius(),
                     ),
                     child: Center(
@@ -131,7 +133,7 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
                         items: _letters.map((String letter) {
                           return DropdownMenuItem<String>(
                             value: letter,
-                            child: Text(letter, style: TextStyle(fontSize: 20)),
+                            child: Text(letter, style: const TextStyle(fontSize: 20)),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
@@ -160,7 +162,7 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
                               decoration: BoxDecoration(
                                 color: color,
                                 border: Border.all(
-                                  color: _backgroundColor == color ? Color(0xFFD8A31A) : Colors.grey,
+                                  color: _backgroundColor == color ? const Color(0xFFD8A31A) : Colors.grey,
                                   width: 3
                                 ),
                                 borderRadius: BorderRadius.circular(20),
@@ -189,7 +191,7 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
                               decoration: BoxDecoration(
                                 color: color,
                                 border: Border.all(
-                                  color: _letterColor == color ? Color(0xFFD8A31A) : Colors.grey,
+                                  color: _letterColor == color ? const Color(0xFFD8A31A) : Colors.grey,
                                   width: 3
                                 ),
                                 borderRadius: BorderRadius.circular(20),
@@ -217,14 +219,14 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFFD8A31A),
               fontSize: 18,
               fontWeight: FontWeight.bold,
               fontFamily: 'Cinzel',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           child,
         ],
       ),
@@ -236,21 +238,21 @@ class _EmblemEditorScreenState extends State<EmblemEditorScreen> {
       case 'Quadrada':
         return BorderRadius.circular(10);
       case 'Triangular':
-        return BorderRadius.only(
+        return const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
           bottomLeft: Radius.zero,
           bottomRight: Radius.zero,
         );
       case 'Cauda-de-andorinha':
-        return BorderRadius.only(
+        return const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
           bottomLeft: Radius.circular(40),
           bottomRight: Radius.circular(40),
         );
       case 'Flâmula':
-        return BorderRadius.only(
+        return const BorderRadius.only(
           topLeft: Radius.circular(5),
           topRight: Radius.circular(20),
           bottomLeft: Radius.circular(5),
@@ -283,12 +285,12 @@ BRASÃO PERSONALIZADO:
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('✅ Brasão Salvo Automaticamente!'),
+          title: const Text('✅ Brasão Salvo Automaticamente!'),
           content: Text('Arquivo salvo em: ${file.path}'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         ),

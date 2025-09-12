@@ -27,13 +27,33 @@ Um aplicativo Flutter que apresenta personagens do universo de Game of Thrones, 
 
 ### Pré-requisitos
 
-- Flutter SDK 3.19.0 ou superior
-- Dart 3.3.0 ou superior
-- Git
 
 ### Clonando o Repositório
 
 ```bash
 git clone https://github.com/Souza371/Game-of-Trones.git
 cd Game-of-Trones
+
+
+### Image Proxy (Web CORS workaround)
+
+Para evitar erros de CORS/Encoding ao carregar imagens externas no Flutter Web, foi adicionado um microserviço em `image_proxy/`.
+
+Passos:
+1. Abrir terminal na pasta `image_proxy`.
+2. Executar:
+	```powershell
+	dart pub get
+	dart run bin/main.dart --port 8081
+	```
+3. O app Web reescreve URLs de imagem para `http://localhost:8081/image?url=<original_url>` quando `kIsWeb`.
+
+Se precisar mudar porta/host (deploy), ajustar constante `_proxyBase` em `lib/screens/characters_screen.dart`.
+
+Produção:
+- Hospedar esse proxy atrás de HTTPS.
+- Adicionar cache CDN se quiser melhor performance.
+
+Segurança:
+- Atualmente aceita qualquer URL. Para endurecer, permitir somente host `thronesapi.com` (validar antes de fazer request).
 

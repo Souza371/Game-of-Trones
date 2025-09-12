@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import '../services/api_service.dart';
 import '../models/character_model.dart';
 
@@ -86,28 +88,9 @@ class CharacterCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: character.imageUrl.isNotEmpty
-                  ? Image.network(
-                      character.imageUrl,
-                      fit: BoxFit.cover,
-                      headers: const {'Cache-Control': 'no-cache'},
-                      cacheWidth: 150,
-                      cacheHeight: 200,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        );
-                      },
-                      errorBuilder: (context, error, stackTrace) {
-                        print('? Erro ao carregar imagem: \\${character.imageUrl}');
-                        print('? Erro: \\${error}');
-                        return _buildPlaceholderImage(character.fullName);
-                      },
+                  ? _SmartCharacterImage(
+                      url: character.imageUrl,
+                      placeholder: _buildPlaceholderImage(character.fullName),
                     )
                   : _buildPlaceholderImage(character.fullName),
             ),
@@ -151,6 +134,126 @@ class CharacterCard extends StatelessWidget {
           name.isNotEmpty ? name[0] : '?',
           style: const TextStyle(fontSize: 48, fontFamily: 'MedievalSharp'),
         ),
+      ),
+    );
+  }
+}
+
+// Força recarregar limpando o cache interno do CachedNetworkImage.
+void _retryImage(String url) {
+  // O provider interno usa url como chave; ao remover manualmente pode-se tentar outra vez.
+  CachedNetworkImage.evictFromCache(url);
+}
+
+class _SmartCharacterImage extends StatefulWidget {
+  final String url;
+  final Widget placeholder;
+  const _SmartCharacterImage({required this.url, required this.placeholder});
+
+  @override
+  State<_SmartCharacterImage> createState() => _SmartCharacterImageState();
+}
+
+class _SmartCharacterImageState extends State<_SmartCharacterImage> {
+  int _bust = 0;
+  bool _fallback = false; // Usa Image.network como último recurso.
+  static const String _proxyBase = 'http://localhost:8081/image?url='; // Ajustar conforme necessário.
+
+  Map<String, String>? get _headers => kIsWeb
+      ? null // Web ignora/filtra muitos headers; evitar para não provocar erro.
+      : const {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+          'Accept': 'image/avif,image/webp,image/apng,image/jpeg,image/*,*/*;q=0.8',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Cache-Control': 'no-cache'
+        };
+
+  String get _effectiveUrl {
+    final base = _bust == 0
+        ? widget.url
+        : '${widget.url}${widget.url.contains('?') ? '&' : '?'}cb=$_bust';
+    if (kIsWeb) {
+      return '$_proxyBase${Uri.encodeFull(base)}';
+    }
+    return base;
+  }
+
+  void _retry() {
+    if (!_fallback) {
+      CachedNetworkImage.evictFromCache(_effectiveUrl);
+    }
+    setState(() {
+      _bust++;
+      // Depois de duas tentativas, muda para fallback simples.
+      if (_bust > 2) _fallback = true;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_fallback) {
+      return Image.network(
+        _effectiveUrl,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => _errorOverlay(),
+        loadingBuilder: (c, child, progress) {
+          if (progress == null) return child;
+            return Stack(
+              fit: StackFit.expand,
+              children: [
+                widget.placeholder,
+                Container(
+                  color: Colors.black.withOpacity(0.15),
+                  child: const Center(child: CircularProgressIndicator()),
+                ),
+              ],
+            );
+        },
+      );
+    }
+
+    return CachedNetworkImage(
+      imageUrl: _effectiveUrl,
+      httpHeaders: _headers,
+      fit: BoxFit.cover,
+      placeholder: (context, url) => Stack(
+        fit: StackFit.expand,
+        children: [
+          widget.placeholder,
+          Container(
+            color: Colors.black.withOpacity(0.15),
+            child: const Center(child: CircularProgressIndicator()),
+          )
+        ],
+      ),
+      errorWidget: (context, url, error) {
+        debugPrint('[SmartImageError] url=$url bust=$_bust fallback=$_fallback error=$error');
+        return _errorOverlay();
+      },
+    );
+  }
+
+  Widget _errorOverlay() {
+    return GestureDetector(
+      onTap: _retry,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          widget.placeholder,
+          Container(
+            color: Colors.black.withOpacity(0.45),
+            child: const Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.refresh, color: Colors.white70, size: 40),
+                  SizedBox(height: 8),
+                  Text('Recarregar', style: TextStyle(color: Colors.white70, fontFamily: 'MedievalSharp')),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
