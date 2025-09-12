@@ -53,10 +53,10 @@ class _CharactersScreenState extends State<CharactersScreen> {
             : GridView.builder(
                 padding: const EdgeInsets.all(16),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3, // Mais colunas, cards menores
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
-                  childAspectRatio: 0.7,
+                  childAspectRatio: 0.8, // Cards mais compactos
                 ),
                 itemCount: characters.length,
                 itemBuilder: (context, index) {
@@ -84,15 +84,21 @@ class CharacterCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: character.imageUrl.isNotEmpty
-                  ? _SmartCharacterImage(
-                      url: character.imageUrl,
-                      placeholder: _buildPlaceholderImage(character.fullName),
-                    )
-                  : _buildPlaceholderImage(character.fullName),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Center(
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: character.imageUrl.isNotEmpty
+                      ? _SmartCharacterImage(
+                          url: character.imageUrl,
+                          placeholder: _buildPlaceholderImage(character.fullName),
+                        )
+                      : _buildPlaceholderImage(character.fullName),
+                ),
+              ),
             ),
           ),
           Padding(
