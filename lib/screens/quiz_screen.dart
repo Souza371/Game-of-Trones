@@ -11,15 +11,37 @@ class _QuizScreenState extends State<QuizScreen> {
   final List<_QuizQuestion> _questions = [
     _QuizQuestion(
       question: 'Qual seu signo do zodíaco?',
-      options: ['Áries', 'Touro', 'Gêmeos', 'Câncer'],
+      options: [
+        'Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem',
+        'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'
+      ],
     ),
     _QuizQuestion(
-      question: 'Qual seu maior valor?',
-      options: ['Lealdade', 'Ambição', 'Coragem', 'Sabedoria'],
+      question: 'Quando está sob pressão, como você reage?',
+      options: [
+        'Mantenho a calma e penso antes de agir',
+        'Tomo a liderança e decido rápido',
+        'Procuro apoio dos amigos',
+        'Sigo minha intuição, mesmo que arriscado'
+      ],
     ),
     _QuizQuestion(
-      question: 'O que você mais valoriza em amigos?',
-      options: ['Honestidade', 'Poder', 'Aventura', 'Inteligência'],
+      question: 'O que é mais importante para você?',
+      options: [
+        'Justiça',
+        'Poder',
+        'Tradição',
+        'Liberdade'
+      ],
+    ),
+    _QuizQuestion(
+      question: 'Como você lida com conflitos?',
+      options: [
+        'Tento negociar e evitar brigas',
+        'Enfrento de frente, sem medo',
+        'Procuro entender todos os lados',
+        'Uso estratégia e inteligência'
+      ],
     ),
     _QuizQuestion(
       question: 'Qual animal você mais se identifica?',

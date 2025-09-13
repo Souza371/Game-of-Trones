@@ -3,6 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import '../services/api_service.dart';
 import '../models/character_model.dart';
+// Imagem de fundo do castelo
+const String castleBg = 'assets/images/castle_bg.jpg';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
@@ -46,24 +48,37 @@ class _CharactersScreenState extends State<CharactersScreen> {
         backgroundColor: Colors.black87,
         foregroundColor: Colors.white,
       ),
-      body: isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : characters.isEmpty
-            ? const Center(child: Text('Nenhum personagem encontrado'))
-            : GridView.builder(
-                padding: const EdgeInsets.all(16),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Mais colunas, cards menores
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 0.8, // Cards mais compactos
-                ),
-                itemCount: characters.length,
-                itemBuilder: (context, index) {
-                  final character = characters[index];
-                  return CharacterCard(character: character);
-                },
-              ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              castleBg,
+              fit: BoxFit.cover,
+              color: Colors.black.withOpacity(0.35),
+              colorBlendMode: BlendMode.darken,
+            ),
+          ),
+          // Conteúdo principal
+          isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : characters.isEmpty
+                ? const Center(child: Text('Nenhum personagem encontrado'))
+                : GridView.builder(
+                    padding: const EdgeInsets.all(16),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // Mais colunas, cards menores
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 0.8, // Cards mais compactos
+                    ),
+                    itemCount: characters.length,
+                    itemBuilder: (context, index) {
+                      final character = characters[index];
+                      return CharacterCard(character: character);
+                    },
+                  ),
+        ],
+      ),
     );
   }
 }
