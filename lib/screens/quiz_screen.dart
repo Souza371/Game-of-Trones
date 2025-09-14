@@ -31,37 +31,7 @@ class _QuizScreenState extends State<QuizScreen> {
         'Justiça',
         'Poder',
         'Tradição',
-        'Liberdade'
-      ],
-    ),
-    _QuizQuestion(
-      question: 'Como você lida com conflitos?',
-      options: [
-        'Tento negociar e evitar brigas',
-        'Enfrento de frente, sem medo',
-        'Procuro entender todos os lados',
-        'Uso estratégia e inteligência'
-      ],
-    ),
-    _QuizQuestion(
-      question: 'Qual animal você mais se identifica?',
-      options: ['Lobo', 'Leão', 'Dragão', 'Corvo'],
-    ),
-    _QuizQuestion(
-      question: 'Qual estação do ano você prefere?',
-      options: ['Inverno', 'Verão', 'Primavera', 'Outono'],
-    ),
-    _QuizQuestion(
-      question: 'Qual dessas cores você mais gosta?',
-      options: ['Cinza', 'Dourado', 'Vermelho', 'Azul'],
-    ),
-    _QuizQuestion(
-      question: 'Qual dessas frases te define?',
-      options: [
-        'O inverno está chegando',
-        'Ouça-me rugir',
-        'Fogo e sangue',
-        'Nós não semeamos'
+        'Lealdade'
       ],
     ),
     _QuizQuestion(
@@ -107,34 +77,43 @@ class _QuizScreenState extends State<QuizScreen> {
             color: Colors.black.withOpacity(0.18),
             colorBlendMode: BlendMode.darken,
           ),
-          Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'Pergunta ${_currentQuestion + 1} de ${_questions.length}',
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
-                ),
-                const SizedBox(height: 24),
-                Text(
-                  q.question,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
-                ),
-                const SizedBox(height: 32),
-                ...List.generate(q.options.length, (i) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown.shade700,
-                      foregroundColor: Colors.white,
-                      textStyle: const TextStyle(fontSize: 18, fontFamily: 'MedievalSharp'),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 500),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Pergunta ${_currentQuestion + 1} de ${_questions.length}',
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
+                      textAlign: TextAlign.center,
                     ),
-                    onPressed: () => _next(i),
-                    child: Text(q.options[i]),
-                  ),
-                )),
-              ],
+                    const SizedBox(height: 24),
+                    Text(
+                      q.question,
+                      style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 32),
+                    ...List.generate(q.options.length, (i) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.brown.shade700,
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 18, fontFamily: 'MedievalSharp'),
+                        ),
+                        onPressed: () => _next(i),
+                        child: Text(q.options[i]),
+                      ),
+                    )),
+                  ],
+                ),
+              ),
             ),
           ),
         ],

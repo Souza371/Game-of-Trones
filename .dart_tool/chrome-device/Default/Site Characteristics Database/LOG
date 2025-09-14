@@ -1,7 +1,11 @@
-2025/09/12-20:58:26.038 5d10 Reusing MANIFEST C:\Users\VICENT~1\AppData\Local\Temp\flutter_tools.7522923f\flutter_tools_chrome_device.992d979a\Default\Site Characteristics Database/MANIFEST-000001
-2025/09/12-20:58:26.040 5d10 Recovering log #10
-2025/09/12-20:58:26.042 5d10 Reusing old log C:\Users\VICENT~1\AppData\Local\Temp\flutter_tools.7522923f\flutter_tools_chrome_device.992d979a\Default\Site Characteristics Database/000010.log 
-2025/09/12-20:58:26.042 5d10 Delete type=0 #3
-2025/09/12-20:58:26.042 5d10 Delete type=2 #4
-2025/09/12-20:58:26.042 5d10 Delete type=2 #6
-2025/09/12-20:58:26.043 5d10 Delete type=0 #6
+2025/09/14-02:39:46.308 1274 Reusing MANIFEST C:\Users\usuario\AppData\Local\Temp\flutter_tools.db856828\flutter_tools_chrome_device.c3dea6ab\Default\Site Characteristics Database/MANIFEST-000001
+2025/09/14-02:39:46.437 1274 Recovering log #19
+2025/09/14-02:39:46.438 1274 Reusing old log C:\Users\usuario\AppData\Local\Temp\flutter_tools.db856828\flutter_tools_chrome_device.c3dea6ab\Default\Site Characteristics Database/000019.log 
+2025/09/14-02:39:46.442 1274 Delete type=0 #3
+2025/09/14-02:39:46.442 1274 Delete type=2 #4
+2025/09/14-02:39:46.442 1274 Delete type=2 #6
+2025/09/14-02:39:46.442 1274 Delete type=0 #6
+2025/09/14-02:39:46.443 1274 Delete type=0 #10
+2025/09/14-02:39:46.444 1274 Delete type=2 #11
+2025/09/14-02:39:46.444 1274 Delete type=2 #13
+2025/09/14-02:39:46.446 1274 Delete type=2 #14

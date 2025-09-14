@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
           labelStyle: TextStyle(color: Color(0xFFC8A971)),
         ),
       ),
-      home: const HomeScreen(),
+  home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
