@@ -1,4 +1,12 @@
+
 import 'package:flutter/material.dart';
+
+class HouseResult {
+  final String name;
+  final String motto;
+  final String emblemUrl;
+  HouseResult(this.name, this.motto, this.emblemUrl);
+}
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -82,36 +90,38 @@ class _QuizScreenState extends State<QuizScreen> {
               padding: const EdgeInsets.all(24.0),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 500),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'Pergunta ${_currentQuestion + 1} de ${_questions.length}',
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      q.question,
-                      style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: 32),
-                    ...List.generate(q.options.length, (i) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.brown.shade700,
-                          foregroundColor: Colors.white,
-                          textStyle: const TextStyle(fontSize: 18, fontFamily: 'MedievalSharp'),
-                        ),
-                        onPressed: () => _next(i),
-                        child: Text(q.options[i]),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Pergunta ${_currentQuestion + 1} de ${_questions.length}',
+                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
+                        textAlign: TextAlign.center,
                       ),
-                    )),
-                  ],
+                      const SizedBox(height: 24),
+                      Text(
+                        q.question,
+                        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'MedievalSharp'),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 32),
+                      ...List.generate(q.options.length, (i) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.brown.shade700,
+                            foregroundColor: Colors.white,
+                            textStyle: const TextStyle(fontSize: 18, fontFamily: 'MedievalSharp'),
+                          ),
+                          onPressed: () => _next(i),
+                          child: Text(q.options[i]),
+                        ),
+                      )),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -136,10 +146,10 @@ class QuizResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final houseIndex = answers.fold<int>(0, (a, b) => a + b) % 4;
     final houses = [
-      _HouseResult('Stark', 'O inverno está chegando', 'assets/images/houses/stark.png'),
-      _HouseResult('Lannister', 'Ouça-me rugir', 'assets/images/houses/lannister.png'),
-      _HouseResult('Targaryen', 'Fogo e sangue', 'assets/images/houses/targaryen.png'),
-      _HouseResult('Greyjoy', 'Nós não semeamos', 'assets/images/houses/greyjoy.png'),
+      HouseResult('Stark', 'O inverno está chegando', 'assets/images/houses/stark.png'),
+      HouseResult('Lannister', 'Ouça-me rugir', 'assets/images/houses/lannister.png'),
+      HouseResult('Targaryen', 'Fogo e sangue', 'assets/images/houses/targaryen.png'),
+      HouseResult('Greyjoy', 'Nós não semeamos', 'assets/images/houses/greyjoy.png'),
     ];
     final result = houses[houseIndex];
     return Scaffold(
@@ -151,32 +161,34 @@ class QuizResultScreen extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Você pertence à Casa',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                result.name,
-                style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFFD8A31A)),
-              ),
-              const SizedBox(height: 16),
-              Image.asset(result.emblemUrl, height: 120),
-              const SizedBox(height: 24),
-              Text(
-                result.motto,
-                style: const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 32),
-              ElevatedButton(
-                onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
-                child: const Text('Voltar ao início'),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Você pertence à Casa',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  result.name,
+                  style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFFD8A31A)),
+                ),
+                const SizedBox(height: 16),
+                Image.asset(result.emblemUrl, height: 120),
+                const SizedBox(height: 24),
+                Text(
+                  result.motto,
+                  style: const TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Refazer Quiz'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -184,9 +196,5 @@ class QuizResultScreen extends StatelessWidget {
   }
 }
 
-class _HouseResult {
-  final String name;
-  final String motto;
-  final String emblemUrl;
-  _HouseResult(this.name, this.motto, this.emblemUrl);
-}
+
+

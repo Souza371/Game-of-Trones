@@ -122,29 +122,35 @@ class CharacterCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    character.fullName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'MedievalSharp',
+                  Flexible(
+                    child: Text(
+                      character.fullName,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'MedievalSharp',
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 6),
-                  Text(
-                    character.title,
-                    style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'MedievalSharp'),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Flexible(
+                    child: Text(
+                      character.title,
+                      style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'MedievalSharp'),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                   const SizedBox(height: 6),
-                  Text(
-                    character.family,
-                    style: const TextStyle(fontSize: 16, color: Color(0xFFD8A31A), fontFamily: 'MedievalSharp'),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  Flexible(
+                    child: Text(
+                      character.family,
+                      style: const TextStyle(fontSize: 16, color: Color(0xFFD8A31A), fontFamily: 'MedievalSharp'),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ],
               ),

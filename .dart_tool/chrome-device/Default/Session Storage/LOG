@@ -1,15 +1,23 @@
-2025/09/14-16:57:12.243 1a8c Reusing MANIFEST C:\Users\usuario\AppData\Local\Temp\flutter_tools.da211d3e\flutter_tools_chrome_device.c7b22f57\Default\Session Storage/MANIFEST-000001
-2025/09/14-16:57:12.254 1a8c Recovering log #11
-2025/09/14-16:57:12.258 1a8c Reusing old log C:\Users\usuario\AppData\Local\Temp\flutter_tools.da211d3e\flutter_tools_chrome_device.c7b22f57\Default\Session Storage/000011.log 
-2025/09/14-16:57:12.260 1a8c Delete type=0 #3
-2025/09/14-16:57:12.261 1a8c Delete type=2 #5
-2025/09/14-16:57:12.261 1a8c Delete type=2 #7
-2025/09/14-16:57:12.261 1a8c Delete type=0 #8
-2025/09/14-16:57:12.261 1a8c Delete type=2 #9
-2025/09/14-16:57:12.261 1a8c Delete type=2 #11
-2025/09/14-16:57:12.261 1a8c Delete type=2 #12
-2025/09/14-16:59:16.745 18e8 Level-0 table #14: started
-2025/09/14-16:59:16.770 18e8 Level-0 table #14: 13150 bytes OK
-2025/09/14-16:59:16.798 18e8 Delete type=0 #11
-2025/09/14-17:00:43.106 18e8 Level-0 table #16: started
-2025/09/14-17:00:43.122 18e8 Level-0 table #16: 10862 bytes OK
+2025/09/14-17:19:00.696 2410 Reusing MANIFEST C:\Users\usuario\AppData\Local\Temp\flutter_tools.4ef2d169\flutter_tools_chrome_device.1b77de78\Default\Session Storage/MANIFEST-000001
+2025/09/14-17:19:00.700 2410 Recovering log #13
+2025/09/14-17:19:00.701 2410 Level-0 table #16: started
+2025/09/14-17:19:00.718 2410 Level-0 table #16: 10862 bytes OK
+2025/09/14-17:19:00.720 2410 Recovering log #15
+2025/09/14-17:19:00.725 2410 Reusing old log C:\Users\usuario\AppData\Local\Temp\flutter_tools.4ef2d169\flutter_tools_chrome_device.1b77de78\Default\Session Storage/000015.log 
+2025/09/14-17:19:00.782 2410 Delete type=0 #3
+2025/09/14-17:19:00.782 2410 Delete type=2 #5
+2025/09/14-17:19:00.782 2410 Delete type=2 #7
+2025/09/14-17:19:00.782 2410 Delete type=0 #8
+2025/09/14-17:19:00.785 2410 Delete type=2 #9
+2025/09/14-17:19:00.785 2410 Delete type=2 #11
+2025/09/14-17:19:00.785 2410 Delete type=0 #11
+2025/09/14-17:19:00.786 2410 Delete type=2 #12
+2025/09/14-17:19:00.788 2410 Delete type=0 #13
+2025/09/14-17:19:00.834 2848 Compacting 4@0 + 0@1 files
+2025/09/14-17:19:00.865 2848 Generated table #17@0: 147 keys, 4135 bytes
+2025/09/14-17:19:00.865 2848 Compacted 4@0 + 0@1 files => 4135 bytes
+2025/09/14-17:19:00.925 2848 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/09/14-17:19:00.948 2848 Delete type=2 #3
+2025/09/14-17:19:00.948 2848 Delete type=2 #4
+2025/09/14-17:19:00.948 2848 Delete type=2 #14
+2025/09/14-17:19:00.948 2848 Delete type=2 #16
