@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     }
   }
 
-  void _startAudioWeb() async {
+  Future<void> _startAudioWeb() async {
     await _initAudio();
     setState(() {
       _showOverlay = false;

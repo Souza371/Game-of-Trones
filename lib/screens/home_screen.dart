@@ -82,7 +82,7 @@ class HomeScreen extends StatefulWidget {
   final AudioPlayer? player;
   final bool? isPlaying;
   final bool? showMusicButton;
-  final VoidCallback? onStartMusic;
+  final Future<void> Function()? onStartMusic;
   final ValueChanged<double>? onVolumeChanged;
   const HomeScreen({
     super.key,
@@ -119,8 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
               message: widget.isPlaying == true ? 'Volume da música' : 'Ativar música de fundo',
               child: _PulsingMusicButton(
                 onPressed: widget.isPlaying == true
-                    ? () => setState(() => _showVolume = !_showVolume)
-                    : widget.onStartMusic ?? () {},
+                    ? () async => setState(() => _showVolume = !_showVolume)
+                    : widget.onStartMusic,
                 isPlaying: widget.isPlaying ?? false,
                 tooltip: widget.isPlaying == true ? 'Volume da música' : 'Ativar música de fundo',
               ),
@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _PulsingMusicButton extends StatefulWidget {
-  final VoidCallback onPressed;
+  final Future<void> Function()? onPressed;
   final String tooltip;
   final bool isPlaying;
   const _PulsingMusicButton({
@@ -269,6 +269,7 @@ class _PulsingMusicButton extends StatefulWidget {
 class _PulsingMusicButtonState extends State<_PulsingMusicButton> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
+  bool _loading = false;
 
   @override
   void initState() {
@@ -296,7 +297,15 @@ class _PulsingMusicButtonState extends State<_PulsingMusicButton> with SingleTic
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(100),
-          onTap: widget.onPressed,
+          onTap: _loading
+              ? null
+              : () async {
+                  if (widget.onPressed != null) {
+                    setState(() => _loading = true);
+                    await widget.onPressed!();
+                    setState(() => _loading = false);
+                  }
+                },
           child: Container(
             width: 110,
             height: 110,
@@ -309,12 +318,14 @@ class _PulsingMusicButtonState extends State<_PulsingMusicButton> with SingleTic
               ],
             ),
             child: Center(
-              child: CustomPaint(
-                size: const Size(70, 90),
-                painter: _MusicNotePainter(
-                  color: widget.isPlaying ? const Color(0xFFFFD700) : Colors.grey,
-                ),
-              ),
+              child: _loading
+                  ? const CircularProgressIndicator(color: Color(0xFFFFD700))
+                  : widget.isPlaying
+                      ? CustomPaint(
+                          size: const Size(70, 90),
+                          painter: _MusicNotePainter(color: const Color(0xFFFFD700)),
+                        )
+                      : Icon(Icons.play_arrow, color: const Color(0xFFFFD700), size: 60),
             ),
           ),
         ),
