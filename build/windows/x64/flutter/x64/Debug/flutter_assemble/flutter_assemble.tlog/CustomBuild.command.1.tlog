@@ -1,0 +1,28 @@
+^C:\USERS\USUARIO\VICO371\GAME-OF-TRONES-2\BUILD\WINDOWS\X64\CMAKEFILES\451FE0905620E60AA675104C35E97B23\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\usuario\vico371\Fluttre\flutter PROJECT_DIR=C:\Users\usuario\vico371\Game-of-Trones-2 FLUTTER_ROOT=C:\Users\usuario\vico371\Fluttre\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\usuario\vico371\Game-of-Trones-2\windows\flutter\ephemeral PROJECT_DIR=C:\Users\usuario\vico371\Game-of-Trones-2 FLUTTER_TARGET=C:\Users\usuario\vico371\Game-of-Trones-2\lib\main.dart DART_DEFINES=RkxVVFRFUl9WRVJTSU9OPTMuMzUuMg==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049MDVkYjk2ODkwOA==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049YThiZmRmYzM5NA==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My45LjA= DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\usuario\vico371\Game-of-Trones-2\.dart_tool\package_config.json C:/Users/usuario/vico371/Fluttre/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\USUARIO\VICO371\GAME-OF-TRONES-2\BUILD\WINDOWS\X64\CMAKEFILES\1350BAAD835FD1C677748362635C81E8\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\USUARIO\VICO371\GAME-OF-TRONES-2\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/usuario/vico371/Game-of-Trones-2/windows -BC:/Users/usuario/vico371/Game-of-Trones-2/build/windows/x64 --check-stamp-file C:/Users/usuario/vico371/Game-of-Trones-2/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,12 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'screens/home_screen.dart';
 
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  late final AudioPlayer _player;
+  bool _isPlaying = false;
+  bool _showOverlay = kIsWeb;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _player = AudioPlayer();
+    if (!kIsWeb) {
+      _initAudio();
+    }
+  }
+
+  Future<void> _initAudio() async {
+    try {
+      await _player.setAsset('assets/audio/tema-de-abertura--oppening-theme-versão-completafull-version.mp3');
+      _player.setLoopMode(LoopMode.one);
+      await _player.play();
+      setState(() => _isPlaying = true);
+    } catch (e) {
+      debugPrint('Erro ao iniciar áudio: $e');
+    }
+  }
+
+  void _startAudioWeb() async {
+    await _initAudio();
+    setState(() {
+      _showOverlay = false;
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      _player.pause();
+    } else if (state == AppLifecycleState.resumed && !_isPlaying) {
+      _player.play();
+      setState(() => _isPlaying = true);
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +142,13 @@ class MyApp extends StatelessWidget {
           labelStyle: TextStyle(color: Color(0xFFC8A971)),
         ),
       ),
-  home: HomeScreen(),
+      home: HomeScreen(
+        player: _player,
+        isPlaying: _isPlaying,
+        showMusicButton: _showOverlay,
+        onStartMusic: _startAudioWeb,
+        onVolumeChanged: (v) => _player.setVolume(v),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

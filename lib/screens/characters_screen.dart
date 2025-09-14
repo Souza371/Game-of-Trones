@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import '../services/api_service.dart';
+import 'package:game_of_trones/services/api_service.dart';
 import '../models/character_model.dart';
 // Imagem de fundo do castelo
 const String castleBg = 'assets/images/castle_bg.jpg';
@@ -174,11 +174,7 @@ class CharacterCard extends StatelessWidget {
   }
 }
 
-// Força recarregar limpando o cache interno do CachedNetworkImage.
-void _retryImage(String url) {
-  // O provider interno usa url como chave; ao remover manualmente pode-se tentar outra vez.
-  CachedNetworkImage.evictFromCache(url);
-}
+
 
 class _SmartCharacterImage extends StatefulWidget {
   final String url;

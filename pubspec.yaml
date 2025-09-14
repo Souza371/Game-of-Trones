@@ -16,6 +16,7 @@ dependencies:
   url_launcher: ^6.2.6
   cached_network_image: ^3.3.1
   webview_flutter: ^4.13.0
+  just_audio: ^0.10.5
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +32,7 @@ flutter:
     - assets/images/houses/Lannister.jpg
     - assets/images/houses/Targaryen.jpg
     - assets/images/houses/Greyjoy.jpg
+    - assets/audio/tema-de-abertura--oppening-theme-versão-completafull-version.mp3
   fonts:
     - family: MedievalSharp
       fonts:

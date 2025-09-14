@@ -146,10 +146,10 @@ class QuizResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final houseIndex = answers.fold<int>(0, (a, b) => a + b) % 4;
     final houses = [
-      HouseResult('Stark', 'O inverno está chegando', 'assets/images/houses/stark.png'),
-      HouseResult('Lannister', 'Ouça-me rugir', 'assets/images/houses/lannister.png'),
-      HouseResult('Targaryen', 'Fogo e sangue', 'assets/images/houses/targaryen.png'),
-      HouseResult('Greyjoy', 'Nós não semeamos', 'assets/images/houses/greyjoy.png'),
+      HouseResult('Stark', 'O inverno está chegando', 'assets/images/houses/Stark.jpg'),
+      HouseResult('Lannister', 'Ouça-me rugir', 'assets/images/houses/Lannister.jpg'),
+      HouseResult('Targaryen', 'Fogo e sangue', 'assets/images/houses/Targaryen.jpg'),
+      HouseResult('Greyjoy', 'Nós não semeamos', 'assets/images/houses/Greyjoy.jpg'),
     ];
     final result = houses[houseIndex];
     return Scaffold(
