@@ -36,8 +36,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   Future<void> _initAudio() async {
     try {
+      debugPrint('Botão de música clicado! Iniciando áudio...');
+      await _player.stop();
       await _player.setAsset('assets/audio/tema-de-abertura--oppening-theme-versão-completafull-version.mp3');
-      _player.setLoopMode(LoopMode.one);
+      await _player.setLoopMode(LoopMode.one);
       await _player.play();
       setState(() => _isPlaying = true);
     } catch (e) {
