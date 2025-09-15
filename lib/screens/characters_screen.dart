@@ -1,3 +1,5 @@
+import '../data/models/personagem.dart';
+import 'personagem_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -90,73 +92,93 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Center(
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: character.imageUrl.isNotEmpty
-                      ? _SmartCharacterImage(
-                          url: character.imageUrl,
-                          placeholder: _buildPlaceholderImage(character.fullName),
-                        )
-                      : _buildPlaceholderImage(character.fullName),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PersonagemDetailScreen(
+              personagem: Personagem(
+                nome: character.fullName,
+                casa: character.family,
+                titulos: [character.title],
+                status: '',
+                aliados: [],
+                historia: '',
+                imagem: character.imageUrl,
+              ),
+            ),
+          ),
+        );
+      },
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Center(
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: character.imageUrl.isNotEmpty
+                        ? _SmartCharacterImage(
+                            url: character.imageUrl,
+                            placeholder: _buildPlaceholderImage(character.fullName),
+                          )
+                        : _buildPlaceholderImage(character.fullName),
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                    child: Text(
-                      character.fullName,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontFamily: 'MedievalSharp',
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        character.fullName,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'MedievalSharp',
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Flexible(
-                    child: Text(
-                      character.title,
-                      style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'MedievalSharp'),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    const SizedBox(height: 6),
+                    Flexible(
+                      child: Text(
+                        character.title,
+                        style: const TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'MedievalSharp'),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 6),
-                  Flexible(
-                    child: Text(
-                      character.family,
-                      style: const TextStyle(fontSize: 16, color: Color(0xFFD8A31A), fontFamily: 'MedievalSharp'),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    const SizedBox(height: 6),
+                    Flexible(
+                      child: Text(
+                        character.family,
+                        style: const TextStyle(fontSize: 16, color: Color(0xFFD8A31A), fontFamily: 'MedievalSharp'),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -215,6 +215,18 @@
       ]
     },
     {
+      "name": "synchronized",
+      "version": "3.4.0",
+      "dependencies": []
+    },
+    {
+      "name": "crypto",
+      "version": "3.0.6",
+      "dependencies": [
+        "typed_data"
+      ]
+    },
+    {
       "name": "uuid",
       "version": "4.5.1",
       "dependencies": [
@@ -225,14 +237,12 @@
       ]
     },
     {
-      "name": "synchronized",
-      "version": "3.4.0",
-      "dependencies": []
-    },
-    {
-      "name": "rxdart",
-      "version": "0.28.0",
-      "dependencies": []
+      "name": "async",
+      "version": "2.13.0",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
     },
     {
       "name": "path_provider",
@@ -247,26 +257,37 @@
       ]
     },
     {
+      "name": "rxdart",
+      "version": "0.28.0",
+      "dependencies": []
+    },
+    {
+      "name": "audio_session",
+      "version": "0.2.2",
+      "dependencies": [
+        "flutter",
+        "flutter_web_plugins",
+        "meta",
+        "rxdart"
+      ]
+    },
+    {
+      "name": "just_audio_web",
+      "version": "0.4.16",
+      "dependencies": [
+        "flutter",
+        "flutter_web_plugins",
+        "just_audio_platform_interface",
+        "synchronized",
+        "web"
+      ]
+    },
+    {
       "name": "just_audio_platform_interface",
       "version": "4.6.0",
       "dependencies": [
         "flutter",
         "plugin_platform_interface"
-      ]
-    },
-    {
-      "name": "crypto",
-      "version": "3.0.6",
-      "dependencies": [
-        "typed_data"
-      ]
-    },
-    {
-      "name": "async",
-      "version": "2.13.0",
-      "dependencies": [
-        "collection",
-        "meta"
       ]
     },
     {
@@ -478,6 +499,13 @@
       ]
     },
     {
+      "name": "typed_data",
+      "version": "1.4.0",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
       "name": "fixnum",
       "version": "1.1.1",
       "dependencies": []
@@ -534,17 +562,17 @@
       ]
     },
     {
+      "name": "flutter_web_plugins",
+      "version": "0.0.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
       "name": "plugin_platform_interface",
       "version": "2.1.8",
       "dependencies": [
         "meta"
-      ]
-    },
-    {
-      "name": "typed_data",
-      "version": "1.4.0",
-      "dependencies": [
-        "collection"
       ]
     },
     {
@@ -565,13 +593,6 @@
       "dependencies": [
         "meta",
         "path"
-      ]
-    },
-    {
-      "name": "flutter_web_plugins",
-      "version": "0.0.0",
-      "dependencies": [
-        "flutter"
       ]
     },
     {
@@ -636,27 +657,6 @@
         "path",
         "sqflite_common",
         "sqflite_platform_interface"
-      ]
-    },
-    {
-      "name": "just_audio_web",
-      "version": "0.4.16",
-      "dependencies": [
-        "flutter",
-        "flutter_web_plugins",
-        "just_audio_platform_interface",
-        "synchronized",
-        "web"
-      ]
-    },
-    {
-      "name": "audio_session",
-      "version": "0.2.2",
-      "dependencies": [
-        "flutter",
-        "flutter_web_plugins",
-        "meta",
-        "rxdart"
       ]
     }
   ],

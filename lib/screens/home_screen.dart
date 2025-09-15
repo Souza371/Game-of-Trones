@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         description: 'Veja os personagens principais',
                         onTap: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => CharactersScreen()),
+                            MaterialPageRoute(builder: (context) => const CharactersScreen()),
                           );
                         },
                         small: true,
