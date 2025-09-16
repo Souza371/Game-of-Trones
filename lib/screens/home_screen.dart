@@ -110,21 +110,18 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 36,
+  toolbarHeight: 64,
         automaticallyImplyLeading: false,
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16, top: 4),
-            child: Tooltip(
-              message: widget.isPlaying == true ? 'Volume da música' : 'Ativar música de fundo',
-              child: _PulsingMusicButton(
-                onPressed: widget.isPlaying == true
-                    ? () async => setState(() => _showVolume = !_showVolume)
-                    : widget.onStartMusic,
-                isPlaying: widget.isPlaying ?? false,
-                tooltip: widget.isPlaying == true ? 'Volume da música' : 'Ativar música de fundo',
-              ),
-            ),
+          IconButton(
+            icon: Icon(Icons.volume_up, color: Color(0xFFFFD700), size: 48),
+            tooltip: 'Volume da música',
+            onPressed: () async {
+              if (!(widget.isPlaying ?? false) && widget.onStartMusic != null) {
+                await widget.onStartMusic!();
+              }
+              setState(() => _showVolume = !_showVolume);
+            },
           ),
         ],
       ),
