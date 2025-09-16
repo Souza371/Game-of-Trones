@@ -12,8 +12,8 @@ class PersonagensListScreen extends StatelessWidget {
       body: GridView.builder(
         padding: const EdgeInsets.all(8),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.8,
+          crossAxisCount: 4, // Agora 4 por linha
+          childAspectRatio: 0.7, // Cards mais compactos
           crossAxisSpacing: 8,
           mainAxisSpacing: 8,
         ),
@@ -38,14 +38,14 @@ class PersonagensListScreen extends StatelessWidget {
                     child: Image.asset(
                       personagem.imagem,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.person, size: 80),
+                      errorBuilder: (context, error, stackTrace) => const Icon(Icons.person, size: 60),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(6.0),
                     child: Text(
                       personagem.nome,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                       textAlign: TextAlign.center,
                     ),
                   ),

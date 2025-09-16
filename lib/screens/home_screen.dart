@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:just_audio/just_audio.dart';
 import 'westeros_map_screen.dart';
-import 'characters_screen.dart';
+import 'personagens_list_screen.dart';
 import 'quiz_screen.dart';
 // Imagem de fundo do castelo
 const String castleBg = 'assets/images/castle_bg.jpg';
@@ -183,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         description: 'Veja os personagens principais',
                         onTap: () {
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const CharactersScreen()),
+                            MaterialPageRoute(builder: (context) => const PersonagensListScreen()),
                           );
                         },
                         small: true,
